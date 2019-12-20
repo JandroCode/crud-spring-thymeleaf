@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/layout::head">
+</head>
+<body>
+<div class="container mt-3">
+
+	<h2 class="text-center">Listado de usuarios</h2>
+	
+	<a class="btn btn-success mt-5" th:href="@{/usersform}">Agregar Usuario</a>
+	<!--Mensajes flash -->
+	
+	<div class="alert alert-success mt-3" th:if="${success!=null}" th:text="${success}"></div>
+	
+	<table class="table mt-5 text-center">
+		<thead>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Acciones</th>
+		</thead>
+		
+		<tbody>
+			<tr th:each="usuario : ${usuarios}">
+				<td th:text="${usuario.nombre}" ></td>
+				<td th:text="${usuario.email}" ></td>
+				<td>
+					<a  th:href="@{/delete/} + ${usuario.id}" onclick="return confirm('Eliminar?');">
+						<button class="btn btn-danger">
+							<i class="fas fa-trash-alt"></i>
+						</button>
+					</a>
+					
+					<a th:href="@{/edit/} + ${usuario.id}" >
+						<button class="btn btn-primary">
+							<i class="fas fa-pencil-alt"></i>
+						</button>
+						
+					
+					</a>
+				
+					
+				
+				</td>
+				
+				
+			</tr>
+			
+		</tbody>
+	</table>
+</div>
+	
+
+
+
+</body>
+</html>

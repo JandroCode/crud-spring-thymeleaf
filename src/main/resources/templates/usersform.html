@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head th:replace="layouts/layout::head">
+<meta charset="utf-8" />
+<title>Formulario de usuarios</title>
+</head>
+<body>
+
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div class="col-md-7">
+
+
+				<div class="card">
+					<div class="card-header">
+						<h4 class="text-center mb-2">Agregar Usuario</h4>
+					</div>
+					<div class="card-body">
+						<form th:action="@{/save}" th:object="${usuario}" method="POST">
+							<div class="row form-group">
+								<label class="col-md-3">Nombre</label> <input type="text"
+									th:field="*{nombre}" class="form-control col-md-7" /> 
+									
+									<small class="form-text text-danger offset-3"
+										th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" >
+									</small>
+							</div>
+
+							<div class="row form-group">
+								<label class="col-md-3">Email</label> <input type="email"
+									th:field="*{email}" class="form-control col-md-7" />
+									<small class="form-text text-danger offset-3"
+										th:if="${#fields.hasErrors('email')}" th:errors="*{email}" >
+									</small>
+							</div>
+
+							<div class="row form-group">
+								<button class="btn btn-success  form-control col-md-7  offset-3"
+									type="submit" th:text="${title}"></button>
+							</div>
+						</form>
+						
+						
+					</div>
+					
+				</div>
+				<a class="btn btn-xs btn-light mt-4" th:href="@{/}" th:text="'&laquo;volver'"></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
